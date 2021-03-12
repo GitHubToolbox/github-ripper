@@ -1,0 +1,6 @@
+---
+detectors:
+    TooManyStatements:
+        max_statements: 10
+    TooManyMethods:
+        max_methods: 20

@@ -1,0 +1,106 @@
+#!/usr/bin/env ruby
+
+require 'github-ripper'
+require 'json'
+require 'optparse'
+require 'pp'
+
+MANDATORY_PARAMETERS = [].freeze
+DEFAULT_VALUES = {}.freeze
+
+def init_default_parser
+    parser = OptionParser.new
+
+    parser.banner = "Usage: #{$PROGRAM_NAME}"
+
+    parser.on('-h', '--help', 'Display this screen') do
+        puts parser
+        exit(1)
+    end
+    parser
+end
+
+# This method reeks of :reek:UtilityFunction, :reek:TooManyStatements
+def add_parameters(parser, options)
+    parser.separator ''
+    parser.separator 'Parameters:'
+    parser.on('-t', '--token <token>', 'GitHub personal access token (PAT)') { |token| options[:token] = token }
+    parser.on('-b', '--base-dir <path>', "The base directory to download to [default: #{File.expand_path('~')}/Downloads/]") { |base_dir| options[:base_dir] = base_dir }
+    parser.on('-g', '--use-git', TrueClass, 'Use git instead of https to clone the repositories') { |_errors| options[:use_git] = true }
+    [parser, options]
+end
+
+# This method reeks of :reek:UtilityFunction, :reek:TooManyStatements
+def add_repo_flag_parameters(parser, options)
+    parser.separator ''
+    parser.separator 'Cloning Parameters:'
+    parser.on('-u', '--user <names>', 'Github username(s) to rip') { |user| options[:user] = user }
+    parser.on('-o', '--org <names>', 'Github organisation(s) to rip') { |org| options[:org] = org }
+    parser.on('-U', '--user-repos', TrueClass, 'Rip all of the repositories for the named user(s)') { |_dry_run| options[:user_repos] = true }
+    parser.on('-M', '--org-member-repos', TrueClass, 'Rip all of the repositories for all organisation the user(s) is a member of') { |_quiet| options[:org_members_repos] = true }
+    parser.on('-A', '--all-repos', TrueClass, 'Same as running -U -M') { |_silent| options[:all_repos] = true }
+    parser.on('-O', '--org-repos', TrueClass, 'Rip all of the repositories for the named organisation(s)') { |_errors| options[:org_repos] = true }
+    [parser, options]
+end
+
+# This method reeks of :reek:UtilityFunction, :reek:TooManyStatements
+def add_flag_parameters(parser, options)
+    parser.separator ''
+    parser.separator 'Flags:'
+    parser.on('-d', '--dry-run', 'Show a list of repositories that WOULD be ripped') { |_dry_run| options[:dry_run] = true }
+    parser.on('-f', '--full', 'Show status of all repositories in post run report') { |_errors| options[:full_report] = true }
+    parser.on('-q', '--quiet', 'Suppress the showing of the post run report') { |_quiet| options[:quiet] = true }
+    parser.on('-s', '--silent', 'Suppress all output') { |_silent| options[:silent] = true }
+    [parser, options]
+end
+
+def create_parser
+    options = DEFAULT_VALUES.dup
+
+    parser = init_default_parser
+    parser, options = add_parameters(parser, options)
+    parser, options = add_repo_flag_parameters(parser, options)
+    parser, options = add_flag_parameters(parser, options)
+
+    [parser, options]
+end
+
+def process_parser(parser, options)
+    begin
+        parser.parse!
+        missing = MANDATORY_PARAMETERS.reject { |param| options.include?(param) }
+        raise OptionParser::MissingArgument.new(missing.join(', ')) unless missing.empty?
+    rescue OptionParser::InvalidOption, OptionParser::InvalidArgument, OptionParser::MissingArgument => exception
+        exit_with_error(parser, exception)
+    end
+    #
+    # The parser will use :"some-symbol" so we convert it to :some_symbol
+    #
+    options.transform_keys(&:to_s).transform_keys { |key| key.gsub('-', '_') }.transform_keys(&:to_sym)
+end
+
+def exit_with_error(parser, exception = nil)
+    puts exception if exception
+    puts parser.help
+    exit
+end
+
+def process_arguments
+    parser, options = create_parser
+    options = process_parser(parser, options)
+
+    exit_with_error(parser) if options.empty?
+    options
+end
+
+def main
+    options = process_arguments
+
+    begin
+        GithubRipper.rip(options)
+    rescue StandardError => exception
+        puts exception
+    end
+end
+
+main
