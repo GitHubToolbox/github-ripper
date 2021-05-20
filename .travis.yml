@@ -93,8 +93,8 @@ matrix:
     script:
     - "./reek/scan.sh"
   - language: ruby
-    name: YAML Linting (rvm 2.7)
-    rvm: 2.7
+    name: YAML Linting (rvm 3.0)
+    rvm: 3.0
     before_install:
     - git clone https://github.com/TravisToolbox/yaml-lint
     install:
@@ -112,8 +112,8 @@ matrix:
     script:
     - "./shellcheck/scan.sh"
   - language: ruby
-    name: Link Checking (rvm 2.7)
-    rvm: 2.7
+    name: Link Checking (rvm 3.0)
+    rvm: 3.0
     env:
     - WHITELIST="https://img.shields.io"
     - EXCLUDE_FILES="CHANGELOG.md,github-lister-core.gemspec"
@@ -126,4 +126,4 @@ matrix:
 notifications:
   email: false
   slack:
-    secure: SUarMpNZePsGIzmwZq/jCnEa8nKPE31tnsYF7PjihOQNuMjRjQps+fuVqBCm7tyxf+J79mQ7CelID3zwRN8jWP7pF1ZDJEi6tgLfIj6cCW3UlmKdn3+wzilrjxL32nkjaJvpgh+5Sv5y8PaWg2x82Utp97fh4D/x1d2PcYLjKx8g3iC5FxjDxkydC65ERaEZpTCyFskG2obnJBXUCNdO1b+7jJUxIhuPTkdc/wt51mgpEo+iz3GY4aMSBTOA1Ug5lV3vb8ZUS8YrUdC62/nIEToRzO/TqNt/Pyhzpbj3TDAXlmmw/Cvlsbe4ip670d7MLLxUv7Dyb1zB0+UZiHmLo5eivg2OaYKcjqXIQUPSdfh8cDyjVL1+67Qzeoe8QH1NwZ1kncu38aBmHUQSZgekBbE1yF9PxaQWJFxRWt6dkIBBEWUfSVKBZ8f74vJuZjpJQm95OvFxNbqK71yJER9vTfDuUmCOi1+dwYRYeXF0T0S7zju8LQy0EW1rf7QGSFMWVFASMy7i8oJBESQEAAA5ohWPcGeg7mSeEirLPnstyJeNdULXdFYx6YqrCW+DNsDM67SCPRmLseb8bxwFTPQOMi3vtLFDIp5PoGrRbha4YYYJBwO3QCO6XPHRcIe/wNfDC58uc71l2yYkIY4dT119wzqDxznDRiOEgztnwaY/lHw=
+    secure: KG21jo2z3wbe2uZXQEHO7qNSK4UeHnYuTPiW5HWAy/uV54eP8Lk9fep54mxtTGlYwzdJFHoMWs6rHBZmK/2OvnJ9gVHG4SfYMdcrtkBVN/TeGKm4U51k7/3ZH7/NYdxyI2iHFkD0AkDBaLsq5xDj0R0rm5f7d9fuED1rd7EiiZzxSJIUteP+KfgByzIucqzQd5jEqxgWYRVXeTxbn1uhKoorC2LcCNt7DxDZagj/Z0vrQiXp1YZ27xdcEriZtj7kinzrhAa2FkFMSI58ApjiTorIGls5U9jdcMJMKi5Tx22rD2w031LEo+dEJEPLIo0IxY7w/8SWtx9LXWNKAOrMcDPlRuGFZObMoOj2lWJKb6lb1smEyGiQ37S2Br2dWRug8FeSDQgNI74YqIaIVp1Mf/PKaNUoF/Dsgn7gGuTUraRJ14UsqfoQgXFjxf4Ycm+ZIVOkipncXyBSkFadDHtKFFBCD0c1/PWnNxSKkjGPknzHgV3VApziRg8ejV8sJzW0JH2UQWf3Q12mvRtBtLqGnyQvQ/ipFTRxZAGbQPltvvDMcaNqamBMR4Ksm4AXucIp8OecCFHZOS6yNKsnTlcXdCZ8jxath3HcaPaZaeWXBBDToe3ZI92JQEHo/sX+grfpaNTL8pvfrs7JFPu32jGWm7LGDjnUxXT+ot83rnfcv7E=
