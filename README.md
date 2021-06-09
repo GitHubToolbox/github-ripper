@@ -103,7 +103,7 @@ Flags:
 | Option Name      | Default Value  | Purpose |
 | ---------------- | -------------- | ------- |
 | -t, --token            | No default     | The token used to authenticate yourself (not required but helps remove/mitigate throttling issues) | 
-| -b, --base-dir         | ~/Downloads/   | The directory to place the cloned repos in |
+| -b, --base-dir         | ~/Downloads/repos   | The directory to place the cloned repos in |
 | -g, --use-git          | False          | Use git instead of https to clone the repos, this requires your public key to be configured on GitHub |
 | -u, --user             | No default     | The user(s) you wish to rip the repo of (if not supplied defaults to yourself **IF** a token is used) |
 | -o, --org              | No default     | The organisation(s) you want to rip the repos of |

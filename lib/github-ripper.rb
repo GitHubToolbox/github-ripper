@@ -25,7 +25,7 @@ class GithubRipper
         def rip(options = {})
             # The following is to force github-lister-core to only retun repo slugs
             options[:use_slugs] = true
-            options[:base_dir] = "#{File.expand_path('~')}/Downloads" unless get_option(options, :base_dir)
+            options[:base_dir] = "#{File.expand_path('~')}/Downloads/Repos" unless get_option(options, :base_dir)
 
             repos = get_repo_list(options)
             results = rip_repos(options, repos)

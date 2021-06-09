@@ -5,9 +5,17 @@ All notable changes to this project will be documented in this file.
 
 This changelog was automatically generated using [Caretaker](https://github.com/DevelopersToolbox/caretaker) by [Wolf Software](https://github.com/WolfSoftware)
 
-### [Unreleased](https://github.com/DevelopersToolbox/github-ripper/compare/v0.1.0...HEAD)
+### [v0.1.1](https://github.com/DevelopersToolbox/github-ripper/compare/v0.1.0...v0.1.1)
 
-- Fix travis rvm versions and slack integration [`[head]`](https://github.com/DevelopersToolbox/github-ripper/commit/)
+> Released on June, 9th 2021
+
+- Made the basedir option the file dir without appending /Repos/ to the end [`[head]`](https://github.com/DevelopersToolbox/github-ripper/commit/)
+
+- Fix travis rvm versions and slack integration [`[13e051b]`](https://github.com/DevelopersToolbox/github-ripper/commit/13e051b88cf6081e2e47665332f035b77c8c4aea)
+
+### [v0.1.0](https://github.com/DevelopersToolbox/github-ripper/releases/v0.1.0)
+
+> Released on March, 12th 2021
 
 - The initial commit [`[d6e8c31]`](https://github.com/DevelopersToolbox/github-ripper/commit/d6e8c3134a2a0f19446da799615aeda8998bc8b4)
 

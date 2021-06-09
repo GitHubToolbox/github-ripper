@@ -22,7 +22,7 @@ class GithubRipper
         end
 
         def repo_full_path(options, repo)
-            "#{options[:base_dir]}/Repos/#{repo}"
+            "#{options[:base_dir]}/#{repo}"
         end
 
         def repo_exists?(repo_path)
