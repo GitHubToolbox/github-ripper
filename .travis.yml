@@ -1,11 +1,6 @@
 matrix:
   include:
   - language: ruby
-    name: Bundler (rvm 2.5)
-    rvm: 2.5
-    before_install:
-    - gem install bundler
-  - language: ruby
     name: Bundler (rvm 2.6)
     rvm: 2.6
     before_install:
@@ -20,15 +15,6 @@ matrix:
     rvm: 3.0
     before_install:
     - gem install bundler
-  - language: ruby
-    name: Rubocop (rvm 2.5)
-    rvm: 2.5
-    before_install:
-    - git clone https://github.com/TravisToolbox/rubocop.git
-    install:
-    - "./rubocop/install.sh"
-    script:
-    - "./rubocop/scan.sh"
   - language: ruby
     name: Rubocop (rvm 2.6)
     rvm: 2.6
@@ -56,15 +42,6 @@ matrix:
     - "./rubocop/install.sh"
     script:
     - "./rubocop/scan.sh"
-  - language: ruby
-    name: Reek (rvm 2.5)
-    rvm: 2.5
-    before_install:
-    - git clone https://github.com/TravisToolbox/reek.git
-    install:
-    - "./reek/install.sh"
-    script:
-    - "./reek/scan.sh"
   - language: ruby
     name: Reek (rvm 2.6)
     rvm: 2.6

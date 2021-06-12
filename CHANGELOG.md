@@ -7,9 +7,11 @@ This changelog was automatically generated using [Caretaker](https://github.com/
 
 ### [v0.1.1](https://github.com/DevelopersToolbox/github-ripper/compare/v0.1.0...v0.1.1)
 
-> Released on June, 9th 2021
+> Released on June, 12th 2021
 
-- Made the basedir option the file dir without appending /Repos/ to the end [`[head]`](https://github.com/DevelopersToolbox/github-ripper/commit/)
+- Remove Ruby 2.5 support [`[head]`](https://github.com/DevelopersToolbox/github-ripper/commit/)
+
+- Made the basedir option the file dir without appending /Repos/ to the end [`[f369f7f]`](https://github.com/DevelopersToolbox/github-ripper/commit/f369f7fd358f01db962ebd6aa0f203697f622f99)
 
 - Fix travis rvm versions and slack integration [`[13e051b]`](https://github.com/DevelopersToolbox/github-ripper/commit/13e051b88cf6081e2e47665332f035b77c8c4aea)
 
