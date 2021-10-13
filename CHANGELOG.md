@@ -7,7 +7,9 @@ This changelog was automatically generated using [Caretaker](https://github.com/
 
 ### [Unreleased](https://github.com/DevelopersToolbox/github-ripper/compare/v0.1.1...HEAD)
 
-- Update travis slack integration due to new slack organisation [`[head]`](https://github.com/DevelopersToolbox/github-ripper/commit/)
+- rebrand [`[head]`](https://github.com/DevelopersToolbox/github-ripper/commit/)
+
+- Update travis slack integration due to new slack organisation [`[751d7e3]`](https://github.com/DevelopersToolbox/github-ripper/commit/751d7e3994ba8ab24052568d521dd406b773a47f)
 
 ### [v0.1.0](https://github.com/DevelopersToolbox/github-ripper/releases/v0.1.0)
 
