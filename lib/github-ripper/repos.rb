@@ -12,8 +12,6 @@ class GithubRipper
         # rubocop:disable Metrics/CyclomaticComplexity
         # This method smells of :reek:NilCheck
         def handle_required_parameters(options)
-            debug(options, "Function: #{__method__}")
-
             return if get_option(options, :token)
 
             raise StandardError.new('Please supply a username (-u) or a token (-t)') if (flag_set?(options, :user_repos) || flag_set?(options, :org_members_repos) || flag_set?(options, :all_repos)) && get_option(options, :user).nil?
@@ -26,8 +24,6 @@ class GithubRipper
         # docs go here
         #
         def get_repo_list(options)
-            debug(options, "Function: #{__method__}")
-
             handle_required_parameters(options)
 
             function = function_map_lookup(options)
@@ -41,8 +37,6 @@ class GithubRipper
         # This method smells of :reek:DuplicateMethodCall
         #
         def rip_repos(options, repos)
-            debug(options, "Function: #{__method__}")
-
             repo_count = repos.size
 
             results = if flag_set?(options, :silent)
@@ -54,8 +48,6 @@ class GithubRipper
         end
 
         def process_results(results, options)
-            debug(options, "Function: #{__method__}")
-
             repo_count = count_repos(results)
             error_count = count_errors(results)
             results = filter_results(results, options)

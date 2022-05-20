@@ -14,8 +14,6 @@ class GithubRipper
         private
 
         def get_clone_type(options)
-            debug(options, "Function: #{__method__}")
-
             return 'git clone git@github.com:' if flag_set?(options, :use_git)
 
             return "git clone https://#{options[:token]}@github.com/" if get_option(options, :token)
@@ -24,20 +22,14 @@ class GithubRipper
         end
 
         def repo_full_path(options, repo)
-            debug(options, "Function: #{__method__}")
-
             "#{options[:base_dir]}/#{repo}"
         end
 
         def repo_exists?(repo_path)
-            debug(options, "Function: #{__method__}")
-
             File.directory?(repo_path)
         end
 
         def execute_command(command)
-            debug(options, "Function: #{__method__}")
-
             error_string = ''
             return_code = 0
 
@@ -50,8 +42,6 @@ class GithubRipper
         end
 
         def clone_repo(options, repo, repo_path)
-            debug(options, "Function: #{__method__}")
-
             return { :repo => repo, :path => repo_path, :status => 'Dry Run', :when => 'git clone', :info => '' } if flag_set?(options, :dry_run)
 
             FileUtils.mkdir_p repo_path
@@ -66,8 +56,6 @@ class GithubRipper
         end
 
         def update_repo(options, repo, repo_path)
-            debug(options, "Function: #{__method__}")
-
             return { :repo => repo, :path => repo_path, :status => 'Dry Run', :when => 'git clone', :info => '' } if flag_set?(options, :dry_run)
 
             olddir = Dir.pwd
@@ -83,8 +71,6 @@ class GithubRipper
         end
 
         def clone_repo_wrapper(options, repo)
-            debug(options, "Function: #{__method__}")
-
             repo_path = repo_full_path(options, repo)
 
             return update_repo(options, repo, repo_path) if repo_exists?(repo_path)

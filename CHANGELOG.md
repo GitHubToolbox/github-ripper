@@ -5,11 +5,17 @@ All notable changes to this project will be documented in this file.
 
 This changelog was automatically generated using [Caretaker](https://github.com/DevelopersToolbox/caretaker) by [Wolf Software](https://github.com/WolfSoftware)
 
+### [v0.1.3](https://github.com/DevelopersToolbox/github-ripper/compare/v0.1.2...v0.1.3)
+
+> Released on May, 20th 2022
+
+- removed verbose/debugging code [`[head]`](https://github.com/DevelopersToolbox/github-ripper/commit/)
+
 ### [v0.1.2](https://github.com/DevelopersToolbox/github-ripper/compare/v0.1.1...v0.1.2)
 
 > Released on May, 20th 2022
 
-- Better debugging and cleaner error handling [`[head]`](https://github.com/DevelopersToolbox/github-ripper/commit/)
+- Better debugging and cleaner error handling [`[201ddb9]`](https://github.com/DevelopersToolbox/github-ripper/commit/201ddb96cee1388f570991410d871a05d0ff4d77)
 
 - rebrand [`[5c46d9c]`](https://github.com/DevelopersToolbox/github-ripper/commit/5c46d9c7fe28dc3be562c7534438fe8163633f52)
 

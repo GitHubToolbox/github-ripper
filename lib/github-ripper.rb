@@ -5,7 +5,6 @@ require 'open3'
 require 'rainbow'
 require 'terminal-table'
 
-require_relative 'github-ripper/debugging'
 require_relative 'github-ripper/function-maps'
 require_relative 'github-ripper/git'
 require_relative 'github-ripper/report'
@@ -28,13 +27,7 @@ class GithubRipper
             options[:use_slugs] = true
             options[:base_dir] = "#{File.expand_path('~')}/Downloads/Repos" unless get_option(options, :base_dir)
 
-            verbose(options, 'Verbose mode enabled')
-            debug(options, 'Debug mode enabled')
-
-            verbose(options, 'Getting repo list')
             repos = get_repo_list(options)
-
-            verbose(options, 'Ripping repos')
             results = rip_repos(options, repos)
 
             results, repo_count, error_count = process_results(results, options)

@@ -20,8 +20,6 @@ class GithubRipper
         private
 
         def function_map_lookup(options)
-            debug(options, "Function: #{__method__}")
-
             return FUNCTION_MAP[:user_repos] if flag_set?(options, :user_repos) || get_option(options, :user)
             return FUNCTION_MAP[:org_members_repos] if flag_set?(options, :org_members_repos)
             return FUNCTION_MAP[:all_repos] if flag_set?(options, :all_repos)
