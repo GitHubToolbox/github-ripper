@@ -10,6 +10,8 @@ class GithubRipper
         private
 
         def display_table?(error_count, options)
+            debug(options, "Function: #{__method__}")
+
             # Dry run - force display of all
             return true if flag_set?(options, :dry_run)
 
@@ -27,6 +29,8 @@ class GithubRipper
         # This method smells of :reek:LongParameterList, :reek:DuplicateMethodCall
         #
         def draw_report(results, repo_count, error_count, options)
+            debug(options, "Function: #{__method__}")
+
             return unless display_table?(error_count, options)
 
             table = create_table

@@ -54,6 +54,15 @@ def add_flag_parameters(parser, options)
     [parser, options]
 end
 
+# This method reeks of :reek:UtilityFunction, :reek:TooManyStatements
+def add_debug_flag_parameters(parser, options)
+    parser.separator ''
+    parser.separator 'Flags (Debugging):'
+    parser.on('-D', '--debug', 'Enable debugging') { |_debug| options[:debug] = true }
+    parser.on('-v', '--verbose', 'Verbose Output') { |_verbose| options[:verbose] = true }
+    [parser, options]
+end
+
 def create_parser
     options = DEFAULT_VALUES.dup
 
@@ -61,6 +70,7 @@ def create_parser
     parser, options = add_parameters(parser, options)
     parser, options = add_repo_flag_parameters(parser, options)
     parser, options = add_flag_parameters(parser, options)
+    parser, options = add_debug_flag_parameters(parser, options)
 
     [parser, options]
 end

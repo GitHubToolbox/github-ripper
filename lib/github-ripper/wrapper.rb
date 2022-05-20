@@ -10,9 +10,11 @@ class GithubRipper
         private
 
         def function_wrapper(function, options)
+            debug(options, "Function: #{__method__} - #{function}")
+
             begin
                 results = GithubListerCore.send(function, options)
-            rescue UnknownError, InvalidTokenError, MissingTokenError, TooManyRequests, NotFoundError, MissingOrganisationError, InvalidOptionsHashError => exception
+            rescue GithubListerCore::UnknownError, GithubListerCore::InvalidTokenError, GithubListerCore::MissingTokenError, GithubListerCore::TooManyRequests, GithubListerCore::NotFoundError, GithubListerCore::MissingOrganisationError, GithubListerCore::InvalidOptionsHashError => exception
                 raise StandardError.new(exception.to_s)
             end
             results || []
