@@ -42,7 +42,7 @@ class GithubRipper
         end
 
         def clone_repo(options, repo, repo_path)
-            return { :repo => repo, :path => repo_path, :status => 'Dry Run', :when => 'git clone', :info => '' } if flag_set?(options, :dry_run)
+            return { :repo => repo, :path => repo_path, :status => 'Dry Run', :when => GithubRipper::GIT_CLONE, :info => '' } if flag_set?(options, :dry_run)
 
             FileUtils.mkdir_p repo_path
 
@@ -50,13 +50,13 @@ class GithubRipper
             command = "#{clone_type}#{repo} #{repo_path}"
             return_code, output = execute_command(command)
 
-            return { :repo => repo, :path => repo_path, :status => 'Failed', :when => 'git clone', :info => output } if return_code.positive?
+            return { :repo => repo, :path => repo_path, :status => 'Failed', :when => GithubRipper::GIT_CLONE, :info => output } if return_code.positive?
 
-            { :repo => repo, :path => repo_path, :status => 'Success', :when => 'git clone', :info => 'Clone Succeeded' }
+            { :repo => repo, :path => repo_path, :status => 'Success', :when => GithubRipper::GIT_CLONE, :info => 'Clone Succeeded' }
         end
 
         def update_repo(options, repo, repo_path)
-            return { :repo => repo, :path => repo_path, :status => 'Dry Run', :when => 'git clone', :info => '' } if flag_set?(options, :dry_run)
+            return { :repo => repo, :path => repo_path, :status => 'Dry Run', :when => GithubRipper::GIT_CLONE, :info => '' } if flag_set?(options, :dry_run)
 
             olddir = Dir.pwd
             Dir.chdir repo_path
@@ -65,9 +65,9 @@ class GithubRipper
             return_code, output = execute_command(command)
             Dir.chdir olddir
 
-            return { :repo => repo, :path => repo_path, :status => 'Failed', :when => 'git pull', :info => output } if return_code.positive?
+            return { :repo => repo, :path => repo_path, :status => 'Failed', :when => GithubRipper::GIT_PULL, :info => output } if return_code.positive?
 
-            { :repo => repo, :path => repo_path, :status => 'Success', :when => 'git pull', :info => 'Pull Succeeded' }
+            { :repo => repo, :path => repo_path, :status => 'Success', :when => GithubRipper::GIT_PULL, :info => 'Pull Succeeded' }
         end
 
         def clone_repo_wrapper(options, repo)

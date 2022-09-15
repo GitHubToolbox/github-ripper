@@ -5,6 +5,7 @@ require 'open3'
 require 'rainbow'
 require 'terminal-table'
 
+require_relative 'github-ripper/constants'
 require_relative 'github-ripper/function-maps'
 require_relative 'github-ripper/git'
 require_relative 'github-ripper/report'
